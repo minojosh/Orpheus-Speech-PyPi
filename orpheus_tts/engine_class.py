@@ -65,7 +65,7 @@ class OrpheusModel:
 
         self.model_name = self._map_model_params(model_name)
         self.dtype = dtype
-        self.engine = self._setup_engine(seed, max_model_len, cpu_offload_gb, gpu_memory_utilization, quantization, max_seq_len_to_capture, enforce_eager)
+        self.engine = self._setup_engine(seed, max_model_len, cpu_offload_gb, gpu_memory_utilization, quantization, max_seq_len_to_capture, enforce_eager, tensor_parallel_size)
         self.available_voices = ["zoe", "zac","jess", "leo", "mia", "julia", "leah"]
         self.tokeniser = AutoTokenizer.from_pretrained(model_name)
 
@@ -101,7 +101,8 @@ class OrpheusModel:
             gpu_memory_utilization: float = 0.90,
             quantization: Optional[str] = None,
             max_seq_len_to_capture: int = 8192,
-            enforce_eager: Optional[bool] = None
+            enforce_eager: Optional[bool] = None,
+            tensor_parallel_size: Optional[int] = 1
         ):
         """
             Sets up and initializes the LLM engine with specified configuration.
@@ -126,6 +127,7 @@ class OrpheusModel:
             quantization=quantization,
             max_seq_len_to_capture=max_seq_len_to_capture,
             enforce_eager=enforce_eager,
+            tensor_parallel_size,
             seed=seed
         )
 
