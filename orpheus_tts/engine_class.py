@@ -127,7 +127,7 @@ class OrpheusModel:
             quantization=quantization,
             max_seq_len_to_capture=max_seq_len_to_capture,
             enforce_eager=enforce_eager,
-            tensor_parallel_size,
+            tensor_parallel_size=tensor_parallel_size,
             seed=seed
         )
 
