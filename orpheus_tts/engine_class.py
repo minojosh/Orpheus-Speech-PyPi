@@ -15,7 +15,8 @@ class OrpheusModel:
             gpu_memory_utilization: float = 0.90,
             quantization: Optional[str] = None,
             max_seq_len_to_capture: int = 8192,
-            enforce_eager: Optional[bool] = None
+            enforce_eager: Optional[bool] = None,
+            tensor_parallel_size: Optional[int] = 1
         ):
         """
         Initialize the Orpheus Text-to-Speech engine.
